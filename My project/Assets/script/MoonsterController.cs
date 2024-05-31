@@ -1,29 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using ClearSky;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class MoonsterController : MonoBehaviour
 {
-    int hp = 0;
-    public int max_hp = 0;
-    public GameObject hp_bar;
+    public float MoveYSpeed;
+    private int standard = 10;
+    private SimplePlayerController playerController;
     public float speed;
-    public float jumpForce;
     private Transform myTransform;
     public Transform playerTransform;
-    public enum Status{idle,walk,attack,jump};
+    public enum Status{idle,walk,attack};
     public enum Face{Right,Left};
     public Status status;
     public Face face;
     private SpriteRenderer spr;
     private Rigidbody2D rb;
-    private bool canJump = true; // 是否可以跳跃
 
     void Start()
     {
-        max_hp = 20;
-        hp = max_hp;
+        GameObject player = GameObject.Find("Player");
+        if(player != null){
+            playerController = player.GetComponent<SimplePlayerController>();
+        }
         status = Status.idle;
         spr = this.transform.GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -33,23 +34,26 @@ public class MoonsterController : MonoBehaviour
             face = Face.Left;
         }
         myTransform = this.transform;
-        if(GameObject.Find("Player") != null){
-            playerTransform = GameObject.Find("Player").transform;
+        if(player != null){
+            playerTransform = player.transform;
         }
     }
     void Update()
     {
-        if(hp <= 0){
-            Destroy(this.gameObject);
+        //移動Y方向的怪物
+        transform.Translate(0,MoveYSpeed * Time.deltaTime,0);
+
+        //重新產生怪物
+        if (transform.position.y > 12f){
+        Destroy(this.gameObject);
         }
-        float _percentage = (float)hp/(float)max_hp;
-        hp_bar.transform.localScale = new Vector3(_percentage,hp_bar.transform.localScale.y,hp_bar.transform.localScale.z);
+
         //update status condition
         float deltaTime = Time.deltaTime;
         switch(status){
             case Status.idle:
             if(playerTransform){
-                if(Mathf.Abs(myTransform.position.x - playerTransform.position.x) < 50f){
+                if(Mathf.Abs(myTransform.position.x - playerTransform.position.x) < 10f){
                     status = Status.walk;
                 }
             }
@@ -73,45 +77,29 @@ public class MoonsterController : MonoBehaviour
                 break;
             }
             if(playerTransform){
-                if(Mathf.Abs(myTransform.position.x - playerTransform.position.x) >= 50f){
+                if(Mathf.Abs(myTransform.position.x - playerTransform.position.x) >= 10f){
                     status = Status.idle;
                 }
             }
             break;
         }
-        if (Input.GetKeyDown(KeyCode.W) && IsGrounded() && canJump)
+        //加快上升速度
+         if (playerController != null && playerController.score >= standard)
         {
-            Jump();
-            canJump = false; // 跳跃后禁用跳跃功能
+        MoveYSpeed += 1;
+        standard += 10;
         }
-    }
-    void Jump()
-    {
-    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-    }
-    private bool IsGrounded()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 10f);
-        foreach (Collider2D collider in colliders)
+
+        // 限制 MoveSpeed 的最大值
+        if (MoveYSpeed > 10)
         {
-            if (collider.gameObject != gameObject)
-            {
-                return true;
-            }
+        MoveYSpeed = 10;
         }
-        return false;
     }
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "fireball"){
-            hp -= 1;
             Destroy(other.gameObject);
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            canJump = true; // 重新启用跳跃功能
+            Destroy(this.gameObject);
         }
     }
 }

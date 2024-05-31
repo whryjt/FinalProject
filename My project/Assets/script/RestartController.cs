@@ -18,6 +18,6 @@ public class RestartController : MonoBehaviour
         if (Canvas != null){
             Destroy(Canvas);
         }
-        SceneManager.LoadScene("initialScene");
+        SceneManager.LoadScene("小遊戲");
     }
 }

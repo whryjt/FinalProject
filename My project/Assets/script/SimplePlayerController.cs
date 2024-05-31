@@ -34,12 +34,13 @@ namespace ClearSky
         private bool hasHeal = false;
         private AudioSource deathSound;
         [SerializeField] GameObject replayButton;
+        [SerializeField] GameObject ExitButton;
         public GameObject gameOver;
 
         // Start is called before the first frame update
         void Start()
         {
-            max_hp = 10;
+            max_hp = 20;
             hp = max_hp;
             score = 0;
             scoreTime = 0f;
@@ -67,16 +68,17 @@ namespace ClearSky
 
         private void OnTriggerEnter2D(Collider2D coll)
         {
+            if(coll.gameObject.tag == "monster"){
+            ModifyHp(-2);
+        }
             if(coll.gameObject.tag == "DeathLine"){
                 hp = 0;
             }
             anim.SetBool("isJump", false);
         }
         void OnCollisionEnter2D(Collision2D coll){
-        if(coll.gameObject.tag == "monster"){
-            ModifyHp(-2);
-        }
-        else if(coll.gameObject.tag == "Normal"){
+
+        if(coll.gameObject.tag == "Normal"){
             if(currentFloor == coll.gameObject && hasHeal){
                 return;
             }
@@ -221,6 +223,7 @@ namespace ClearSky
                 alive = false;
                 replayButton.SetActive(true);
                 gameOver.SetActive(true);
+                ExitButton.SetActive(true);
 
                 Time.timeScale = 0.5f;
             }
@@ -238,8 +241,8 @@ namespace ClearSky
             if(num < 0){
                 isHurt = true;
             }
-            if(hp > 10){
-                hp = 10;
+            if(hp > 20){
+                hp = 20;
             }else if(hp < 0){
                 hp = 0;
             }

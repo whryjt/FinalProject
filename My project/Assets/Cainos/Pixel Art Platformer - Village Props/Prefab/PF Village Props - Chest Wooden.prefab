@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3173076518257558991}
   - component: {fileID: 1756022349121846170}
   - component: {fileID: -3905476895870074074}
+  - component: {fileID: 5418460251302422257}
   m_Layer: 0
   m_Name: PF Village Props - Chest Wooden
   m_TagString: Untagged
@@ -226,3 +227,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5418460251302422257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930122694965717508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9b91e39da19d8488f29b38cfe56d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestType: 3

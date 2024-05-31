@@ -1,18 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChestController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum ChestType
     {
-        
+        Gold,
+        Silver,
+        Bronze,
+        Iron
     }
 
-    // Update is called once per frame
-    void Update()
+    public ChestType chestType;
+    private bool isOpened = false;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Player") && !isOpened)
+        {
+            float abilityValue = 0f;
+            switch (chestType)
+            {
+                case ChestType.Gold:
+                    abilityValue = 50f;
+                    break;
+                case ChestType.Silver:
+                    abilityValue = 30f;
+                    break;
+                case ChestType.Bronze:
+                    abilityValue = 10f;
+                    break;
+                case ChestType.Iron:
+                    abilityValue = 5f;
+                    break;
+                default:
+                    abilityValue = 0f;
+                    break;
+            }
+
+            // 傳遞能力值給玩家
+            玩家數值控制 playerStats = other.GetComponent<玩家數值控制>();
+            if (playerStats != null)
+            {
+                playerStats.IncreaseAbility(abilityValue);
+            }
+
+            // 設置寶箱為已打開狀態
+            isOpened = true;
+        }
     }
 }

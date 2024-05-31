@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 8171357953964607655}
   - component: {fileID: 3885033658523954767}
   - component: {fileID: 1723357526685513409}
+  - component: {fileID: 480678547093998477}
   m_Layer: 0
   m_Name: PF Village Props - Chest Silver
   m_TagString: Untagged
@@ -226,3 +227,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &480678547093998477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930122694965717508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9b91e39da19d8488f29b38cfe56d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestType: 1
