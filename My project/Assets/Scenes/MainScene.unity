@@ -573,6 +573,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104755328}
   m_CullTransparentMesh: 1
+--- !u!1 &168433134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 168433135}
+  m_Layer: 0
+  m_Name: "\u9078\u64C7NPC"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &168433135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168433134}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 496.51996, y: 273.47833, z: -5.7849207}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &199719560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,13 +1467,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2068895145}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2068895146}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: MiniGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2124,6 +2155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dcaa9c4fafae184b805482f050ebe23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startScene: 
 --- !u!4 &2068895147
 Transform:
   m_ObjectHideFlags: 0
@@ -2417,3 +2449,4 @@ SceneRoots:
   - {fileID: 199719562}
   - {fileID: 11065600}
   - {fileID: 2068895147}
+  - {fileID: 168433135}
