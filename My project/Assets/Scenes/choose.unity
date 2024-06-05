@@ -533,10 +533,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 655896746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dcaa9c4fafae184b805482f050ebe23, type: 3}
+  m_Script: {fileID: 11500000, guid: 33f68b16e63270a42beec6af21eea7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 0}
   startScene: 
+  mainSceneName: MainScene
 --- !u!4 &655896748
 Transform:
   m_ObjectHideFlags: 0

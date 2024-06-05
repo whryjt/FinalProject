@@ -23,4 +23,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 53c5e0e784213aa4889208bf429ccaea
+  - enabled: 1
+    path: "Assets/Scenes/NPC\u4E92\u52D5\u5834\u666F.unity"
+    guid: 03e30c3a425e565418cb56bc27455232
+  - enabled: 1
+    path: "Assets/Scenes/\u554F\u7B54\u5834\u666F.unity"
+    guid: d8c76918e6dfe8a4fa693b598064ebc5
+  - enabled: 1
+    path: Assets/Scenes/check NPC.unity
+    guid: a15c6780d12a490459b844134bfb50b3
+  - enabled: 1
+    path: Assets/Scenes/FinalScene.unity
+    guid: 56f8bddd04c1fe74bbd430c7f341d4fc
   m_configObjects: {}

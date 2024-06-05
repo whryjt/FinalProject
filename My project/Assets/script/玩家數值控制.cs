@@ -6,31 +6,24 @@ using UnityEngine;
 public class 玩家數值控制 : MonoBehaviour
 {
     private float ability = 0f; // 玩家的能力值
-    private char rank = 'F'; // 玩家的等級，初始等級為 F
+    private string rank = "答應"; // 玩家的等級，初始等級為 答應
 
     // 私有變量，用於存儲 TextMeshPro Text 元件
     private TMP_Text playerAbilityText;
     private TMP_Text playerRankText;
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        // 如果 TextMeshPro Text 元件尚未設置，則在遊戲過程中尋找並設置它們
-        if (playerAbilityText == null)
-        {
-            GameObject playerAbilityGO = GameObject.Find("PlayerAbility");
-            if (playerAbilityGO != null)
-                playerAbilityText = playerAbilityGO.GetComponent<TMP_Text>();
-        }
+        // 在 Start 方法中查找並設置 TextMeshPro Text 元件
+        GameObject playerAbilityGO = GameObject.Find("PlayerAbility");
+        if (playerAbilityGO != null)
+            playerAbilityText = playerAbilityGO.GetComponent<TMP_Text>();
 
-        if (playerRankText == null)
-        {
-            GameObject playerRankGO = GameObject.Find("PlayerRank");
-            if (playerRankGO != null)
-                playerRankText = playerRankGO.GetComponent<TMP_Text>();
-        }
-        
-        UpdateUI(); // 更新 UI 顯示
+        GameObject playerRankGO = GameObject.Find("PlayerRank");
+        if (playerRankGO != null)
+            playerRankText = playerRankGO.GetComponent<TMP_Text>();
+
+        UpdateUI(); // 初始化 UI 顯示
     }
 
     // 更新玩家的 UI
@@ -57,16 +50,16 @@ public class 玩家數值控制 : MonoBehaviour
     void UpdateRank()
     {
         if (ability >= 100f)
-            rank = 'A';
+            rank = "皇后";
         else if (ability >= 80f)
-            rank = 'B';
+            rank = "貴妃";
         else if (ability >= 60f)
-            rank = 'C';
+            rank = "妃";
         else if (ability >= 40f)
-            rank = 'D';
+            rank = "嬪";
         else if (ability >= 20f)
-            rank = 'E';
+            rank = "貴人";
         else
-            rank = 'F';
+            rank = "答應";
     }
 }

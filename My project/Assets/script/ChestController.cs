@@ -12,7 +12,13 @@ public class ChestController : MonoBehaviour
 
     public ChestType chestType;
     private bool isOpened = false;
-
+    private equipmentManager equipment;
+    private void Start(){
+        GameObject item = GameObject.Find("itemManager");
+          if(item != null){
+            equipment = item.GetComponent<equipmentManager>();
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !isOpened)
@@ -36,6 +42,9 @@ public class ChestController : MonoBehaviour
                     abilityValue = 0f;
                     break;
             }
+            Vector3 chestPosition = transform.position;
+
+            equipment.GenerateItem(chestPosition);
 
             // 傳遞能力值給玩家
             玩家數值控制 playerStats = other.GetComponent<玩家數值控制>();

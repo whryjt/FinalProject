@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class SceneController : MonoBehaviour
+public class SceneController1 : MonoBehaviour
 {
-     [HideInInspector]
-    public string startScene;
-
-    // Update is called once per frame
     public void GameStart(){
         SceneManager.LoadScene("choose");
     }
@@ -18,10 +14,20 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
     public void ExitMiniGame(){
-         GameObject playerGo = GameObject.Find("玩家數值顯示");
-        if(playerGo != null){
-            Destroy(playerGo);
-        }
+        SceneManager.LoadScene("問答場景");
+    }
+
+    public void NPCinteract(){
+        SceneManager.LoadScene("NPC互動場景");
+    }
+    public void ExitrequestGame(){
         SceneManager.LoadScene("MainScene");
+    }
+
+    public void checkNPC(){
+        SceneManager.LoadScene("check NPC");
+    }
+    public void FinalScene(){
+        SceneManager.LoadScene("FinalScene");
     }
 }
