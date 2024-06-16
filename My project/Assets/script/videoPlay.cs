@@ -17,21 +17,17 @@ public class videoPlay : MonoBehaviour
 
     // Update is called once per frame
     public void showMovie(){
-        GameObject background = GameObject.Find("NPC互動");
-        GameObject NPC = GameObject.Find("NPCManager");
-        GameObject OG = GameObject.Find("Canvas");
-        OG.SetActive(false);
-        background.SetActive(false);
-        NPC.SetActive(false);
+        GameObject r = GameObject.Find("NPCManager");
+        GameObject s = GameObject.Find("second");
+        r.SetActive(false);
+        s.SetActive(false);
         videoPlayer.Play();
     }
     public void showMovie2(){
-        GameObject background = GameObject.Find("NPC互動");
-        GameObject NPC = GameObject.Find("NPCManager");
-        GameObject OG = GameObject.Find("Canvas");
-        OG.SetActive(false);
-        background.SetActive(false);
-        NPC.SetActive(false);
+        GameObject r = GameObject.Find("NPCManager");
+        GameObject s = GameObject.Find("second");
+        r.SetActive(false);
+        s.SetActive(false);
         videoPlayer2.Play();
     }
     void OnVideoFinished(VideoPlayer vp)

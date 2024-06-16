@@ -11,6 +11,14 @@ public class equipmentManager : MonoBehaviour
         GameObject selectItem = itemPrefabs[RandomIndex];
 
         Vector3 spawnPosition = chestPosition + new Vector3(0,6,0);
-        Instantiate(selectItem, spawnPosition, Quaternion.identity);
+        GameObject newItem = Instantiate(selectItem, spawnPosition, Quaternion.identity);
+
+        StartCoroutine(DestroyAfterDelay(newItem,0.5f));
+    }
+
+    private IEnumerator DestroyAfterDelay(GameObject item,float delaySeconds){
+
+        yield return new WaitForSeconds(delaySeconds);
+        Destroy(item);
     }
 }

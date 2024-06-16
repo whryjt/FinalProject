@@ -11,6 +11,5 @@ public class ChestManager : MonoBehaviour
     int r = Random.Range(0,ChestPrefabs.Length);
     Vector3 chestPosition = position + new Vector3(0f, 1f, 0f); // 调整 Y 轴上的位置，使宝箱在地板上方
     GameObject chest = Instantiate(ChestPrefabs[r], chestPosition, Quaternion.identity);
-    
    }
 }
